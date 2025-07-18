@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="top">
+            <input type="text" class="top-p" id="display" readonly>
+        </div>
+        <div class="mid">
+            <div class="r1">
+                <button id="clear" value="AC" onclick="clearDisplay()">AC</button>
+                <button id="X" value="X" onclick="del()"><svg xmlns="http://www.w3.org/2000/svg" height="23" width="28.5" viewBox="0 0 640 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="#ffffff" d="M576 64H205.3A64 64 0 0 0 160 82.8L9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3L160 429.3c12 12 28.3 18.8 45.3 18.8H576c35.4 0 64-28.7 64-64V128c0-35.4-28.7-64-64-64zm-84.7 254.1c6.3 6.3 6.3 16.4 0 22.6l-22.6 22.6c-6.3 6.3-16.4 6.3-22.6 0L384 301.3l-62.1 62.1c-6.3 6.3-16.4 6.3-22.6 0l-22.6-22.6c-6.3-6.3-6.3-16.4 0-22.6L338.8 256l-62.1-62.1c-6.3-6.3-6.3-16.4 0-22.6l22.6-22.6c6.3-6.3 16.4-6.3 22.6 0L384 210.8l62.1-62.1c6.3-6.3 16.4-6.3 22.6 0l22.6 22.6c6.3 6.3 6.3 16.4 0 22.6L429.3 256l62.1 62.1z"/></svg></button>
+                <button id="%" value="%" onclick="displayValue('%')">%</button>
+                <button id="/" value="/" onclick="displayValue('/')">/</button>
+            </div>
+            <div class="r1">
+                <button id="7" value="7" onclick="displayValue('7')">7</button>
+                <button id="8" value="8" onclick="displayValue('8')">8</button>
+                <button id="9" value="9" onclick="displayValue('9')">9</button>
+                <button id="*" value="*" onclick="displayValue('*')">*</button>
+            </div>
+            <div class="r1">
+                <button id="4" value="4" onclick="displayValue('4')">4</button>
+                <button id="5" value="5" onclick="displayValue('5')">5</button>
+                <button id="6" value="6" onclick="displayValue('6')">6</button>
+                <button id="-" value="-" onclick="displayValue('-')">-</button>
+            </div>
+            <div class="r1">
+                <button id="1" value="1" onclick="displayValue('1')">1</button>
+                <button id="2" value="2" onclick="displayValue('2')">2</button>
+                <button id="3" value="3" onclick="displayValue('3')">3</button>
+                <button id="+" value="+" onclick="displayValue('+')">+</button>
+            </div>
+            <div class="r1">
+                <button id="0" value="0" onclick="displayValue('0')">0</button>
+                <button id="00" value="00" onclick="displayValue('00')">00</button>
+                <button id="." value="." onclick="displayValue('.')">.</button>
+                <button id="=" value="=" onclick="ans()">=</button>
+
+            </div>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+</body>
+
+</html>
