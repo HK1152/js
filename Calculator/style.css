@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+body {
+    width: 100%;
+    /* background-image: url(Img/06.jpg);   */
+    background-color: #efe6dd;
+    /* background-color: #0A192F; */
+    color: #000000;
+    background-blend-mode: color-burn;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main {
+    width: 30%;
+    height: 82vh;
+    display: flex;
+    /* border: 0.01rem solid rgb(0, 0, 0); */
+    flex-direction: column;
+    background-color: #323136;
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0 0 20px 1px black;
+}
+
+.top {
+    width: 95%;
+    height: 17%;
+    display: flex;
+    padding: 0px;
+    margin: auto;
+    margin: 45px auto;
+    justify-content: flex-end;
+    background-color: white;
+    border-radius: 120px;
+}
+
+.top-p {
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    padding: 10px;
+    text-align: right;
+    background: transparent;
+    border: none;
+    font-weight: bold;
+    font-size: 52px;
+    color: #de3a43;
+}
+
+
+.mid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+}
+
+.r1 {
+    width: 100%;
+    height: 100%;
+    padding: 0 20px 0 20px;
+    display: flex;
+    /* border: 2px solid white; */
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.r1-last button {
+    border-radius: 70px;
+}
+
+.btn {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    background-color: #de3a43;
+}
+
+button {
+    width: 100%;
+    height: 8.8vh;
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    font-size: 32px;
+    font-weight: 600;
+    color: #efe6dd;
+    background-color: #de3a43;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #710004;
+}
