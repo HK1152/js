@@ -2,16 +2,13 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: white;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
     width: 100%;
-    /* background-image: url(Img/06.jpg);   */
-    background-color: #efe6dd;
-    /* background-color: #0A192F; */
-    color: #000000;
-    background-blend-mode: color-burn;
+    background: linear-gradient(135deg, #a8edea, #fed6e3); /* Soft aqua to pink gradient */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -21,10 +18,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
-
-
 
 img {
     width: 100%;
@@ -33,89 +27,126 @@ img {
 }
 
 .main {
-    width: 30%;
-    height: 82vh;
+    width: 350px;
+    min-width: 320px;
+    max-width: 95vw;
+    height: 600px;
+    min-height: 500px;
+    background: #2e2f3e;
+    border-radius: 32px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     display: flex;
-    /* border: 0.01rem solid rgb(0, 0, 0); */
     flex-direction: column;
-    background-color: #323136;
-    backdrop-filter: blur(20px);
-    border-radius: 20px;
-    box-shadow: 0 0 20px 1px black;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 0 24px 0;
 }
 
 .top {
-    width: 95%;
-    height: 17%;
+    width: 90%;
+    height: 120px;
+    margin: 32px auto 0 auto;
+    background: #3a3b4f;
+    border-radius: 24px;
     display: flex;
-    padding: 0px;
-    margin: auto;
-    margin: 45px auto;
+    align-items: flex-end;
     justify-content: flex-end;
-    background-color: white;
-    border-radius: 120px;
+    box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05);
+    padding: 0 24px;
 }
 
 .top-p {
     width: 100%;
     height: 100%;
-    font-size: 30px;
-    padding: 10px;
-    text-align: right;
+    font-size: 22px;
     background: transparent;
     border: none;
-    font-weight: bold;
-    font-size: 52px;
-    color: #de3a43;
+    font-weight: 400;
+    color: #e1e1e1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: right;
 }
 
+.top-p .result {
+    font-size: 36px;
+    font-weight: 700;
+    color: #f9f9f9;
+    margin-top: 8px;
+}
 
 .mid {
     width: 100%;
-    height: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    overflow: hidden;
+    padding-bottom: 0;
 }
 
-.r1 {
-    width: 100%;
-    height: 100%;
-    padding: 0 20px 0 20px;
+.r1, .r2, .r3, .r4, .r5 {
+    width: 90%;
     display: flex;
-    /* border: 2px solid white; */
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 50px;
-}
-
-.r1-last button {
-    border-radius: 70px;
-}
-
-.btn {
-    width: 25%;
-    display: flex;
-    justify-content: center;
-    background-color: #de3a43;
+    margin: 8px 0;
+    gap: 12px;
 }
 
 button {
-    width: 100%;
-    height: 8.8vh;
-    background: transparent;
-    border: 0;
-    border-radius: 50%;
-    font-size: 32px;
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    font-size: 24px;
     font-weight: 600;
-    color: #efe6dd;
-    background-color: #de3a43;
-    transition: background-color 0.2s;
+    border: none;
+    background: #f0f0f0;
+    color: #2e2f3e;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.25s ease-in-out;
 }
 
+/* Main operator and equals button */
+button.operator, button.equals {
+    background: #ffcc00;
+    color: #2e2f3e;
+}
+
+/* Equals button special styling */
+button.equals {
+    height: 140px;
+    border-radius: 24px;
+    font-size: 28px;
+    background: #4CAF50;
+    color: #fff;
+}
+
+/* NEW HOVER EFFECTS */
 button:hover {
-    cursor: pointer;
-    background-color: #710004;
+    background: #ffb6b9; /* Light pink */
+    color: #1a1a1a;
+    transform: translateY(-3px) scale(1.05);
+}
+
+button.operator:hover {
+    background: #ffeaa7; /* Soft yellow */
+    color: #2d3436;
+}
+
+button.equals:hover {
+    background: #81ecec; /* Vibrant cyan */
+    color: #2d3436;
+}
+
+button.clear, button.back {
+    background: #ffffff;
+    color: #4CAF50;
+    border: 2px solid #4CAF50;
+}
+
+button.clear:hover, button.back:hover {
+    background: #fd79a8; /* Rose pink */
+    color: #ffffff;
 }
