@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="img-slider">
+            <div class="slide">
+                <video class="bg-video" src="image and video/03.mp4" autoplay loop muted playsinline></video>
+                <button class="website">OPPO</button>
+            </div>
+            <div class="slide">
+                <video class="bg-video" src="image and video/02.mp4" autoplay loop muted playsinline></video>
+                <button class="website">OPPO</button>
+            </div>
+            <div class="slide">
+              
+                <video class="bg-video" src="image and video/03.mp4" autoplay loop muted playsinline></video>
+                <button class="website">SAMSUMG</button>
+            </div>
+            <div class="slide">
+                <div class="bg-img" style="background-image:url('image and video/03.PNG')"></div>
+                <button class="website">SAMASUNG TV</button>
+            </div>
+            <div class="slide">
+                <video class="bg-video" src="image and video/02.mp4" autoplay loop muted playsinline></video>
+                <button class="website">OPPO TAB</button>
+            </div>
+        </div>
+
+    </div>
+    <button class="prev" onclick="change(-1)">
+        <!-- <i class="fa-solid fa-angle-left"></i> -->
+        <
+    </i></button>
+    <button class="next" onclick="change(1)">
+        <!-- <i class="fa-solid fa-angle-right"></i> -->
+         >
+    </button>
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,205 @@
+
+.prev, .next {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    z-index: 2;
+    position: absolute;
+    border: 0.2em solid rgba(255, 255, 255, 0.5);
+    top: 159px;
+    font-weight: 700;
+    color: #000000;
+    background: rgba(255,255,255,0.7);
+    border: 1.5px solid #ff512f44;
+    box-shadow: 0 2px 8px 0 #ff512f22;
+    transition: background 0.25s, box-shadow 0.25s, transform 0.18s;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.prev:hover, .next:hover {
+    color: #000;
+    background-color: #fff;
+}
+.prev {
+    left: 25px;
+}
+
+.next {
+    right: 25px;
+}
+
+
+
+button {
+    z-index: 3;
+    border: none;
+    border-radius: 5px;
+    background-color: #888888d6;
+}
+
+
+.website {
+    position: absolute;
+    left: 50%;
+    bottom: 27px;
+    transform: translateX(-50%);
+    z-index: 2;
+    padding: 10px 19px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(90deg, #ff512f 0%, #dd2476 100%);
+    border: none;
+    border-radius: 32px;
+    box-shadow: 0 2px 16px 0 #ff512f55, 0 1.5px 8px 0 #dd247655;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.13s cubic-bezier(.2,1.8,.5,1.1);
+    cursor: pointer;
+    outline: none;
+    text-shadow: 0 2px 12px #0008;
+    filter: drop-shadow(0 0 8px #ff512f88);
+}
+
+.website:hover, .website:focus {
+    background: linear-gradient(90deg, #dd2476 0%, #ff512f 100%);
+    color: #fff;
+    box-shadow: 0 6px 32px 0 #ff512faa, 0 2px 12px 0 #dd2476aa;
+    filter: drop-shadow(0 0 16px #ff512faa);
+    transform: translateX(-50%) scale(1.07) rotate(-1deg);
+}
+
+img {
+    width: 100%;
+}
+
+.prev {
+    left: 25px;
+}
+
+.next {
+    right: 25px;
+}
+
+.slide {
+    width: 100%;
+    height: 290px;
+    background-size: cover;
+    background-position: center;
+    display: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+
+
+.slide p {
+    position: relative;
+    z-index: 2;
+    color: white;
+    font-size: 2rem;
+    margin: 0;
+    padding: 1.5rem 0;
+    text-shadow: 0 2px 8px #000;
+}
+
+.flash {
+    animation: flash 0.4s;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+.dot {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: 0 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.7);
+    border: 1.5px solid #ff512f44;
+    box-shadow: 0 2px 8px 0 #ff512f22;
+    transition: background 0.25s, box-shadow 0.25s, transform 0.18s;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.dot.active, .dot:hover {
+    background: linear-gradient(90deg, #ff512f 0%, #dd2476 100%);
+    box-shadow: 0 4px 16px 0 #ff512faa, 0 1.5px 8px 0 #dd2476aa;
+    border: 1.5px solid #dd2476;
+    transform: scale(1.18);
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(120deg, #ffecd2 0%, #fcb69f 100%);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    min-height: 100vh;
+}
+.container {
+    max-width: 480px;
+    margin: 18px auto;
+    border-radius: 32px;
+    box-shadow: 0 8px 40px 0 #ff512f33, 0 2px 12px 0 #dd247633;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(12px);
+    overflow: hidden;
+    border: 1.5px solid #fff3;
+}
+
+.img-slider {
+    position: relative;
+    border-radius: 32px;
+    overflow: hidden;
+}
+
+.slide {
+    width: 100%;
+    height: 320px;
+    display: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 32px;
+    background: linear-gradient(120deg, #fcb69f 0%, #ffecd2 100%);
+    box-shadow: 0 2px 16px 0 #ff512f22;
+}
+
+.bg-video, .bg-img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    border-radius: 32px;
+    filter: brightness(0.92) saturate(1.1);
+}
+
+
+
+
+/* Optional: Add a little fade-in for slides */
+.slide {
+    animation: fadein 0.7s;
+}
+@keyframes fadein {
+    from { opacity: 0; transform: scale(0.98);}
+    to   { opacity: 1; transform: scale(1);}
+}
