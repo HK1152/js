@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Slider</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="img-slider">
+            <div class="slide">
+                <video class="bg-video" src="image and video/05.mp4" autoplay loop muted playsinline></video>
+                <button class="website">OPPO FIND N3</button>
+            </div>
+            <div class="slide">
+                <video class="bg-video" src="image and video/06.mp4" autoplay loop muted playsinline></video>
+                <button class="website">INNOVATION REDEFINED</button>
+            </div>
+            <div class="slide">
+                <video class="bg-video" src="image and video/07.mp4" autoplay loop muted playsinline></video>
+                <button class="website">SMART TAB X10</button>
+            </div>
+            <div class="slide">
+                <video class="bg-video" src="image and video/08.mp4" autoplay loop muted playsinline></video>
+                <button class="website">CRYSTAL UHD TV</button>
+            </div>
+            <div class="slide">
+                <video class="bg-video" src="image and video/09.mp4" autoplay loop muted playsinline></video>
+                <button class="website">NEXT-GEN TECH</button>
+            </div>
+        </div>
+    </div>
+
+    <button class="prev" onclick="change(-1)">&lt;</button>
+    <button class="next" onclick="change(1)">&gt;</button>
+
+    <div style="text-align: center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
