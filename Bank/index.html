@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hare Krishna 1152</title>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="img and video/06.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="overlay"></div>
+
+    <header class="navbar">
+        <div class="logo">HK Bank of Asia</div>
+        <nav>
+            <ul>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Credit</a></li>
+                <li><a href="#">App</a></li>
+            </ul>
+        </nav>
+        <button class="btn-get-started">Get Started</button>
+    </header>
+
+    <main class="hero-section">
+        <div class="hero-content-left">
+            <h1>
+                Fueling Business Growth <br>
+                Through <span class="highlight">Innovative</span> and <br>
+                <span class="highlight">Scalable Tools.</span>
+            </h1>
+            <!-- <div class="scalable-tools-btn">
+                <img src="img and video/logo.png" alt="Icon">
+                Scalable Tools
+            </div> -->
+            <div class="stats-section">
+                <div class="stat-item">
+                    <span>100k+</span>
+                    <small>Money Protected</small>
+                </div>
+                <div class="stat-item">
+                    <span>30K+</span>
+                    <small>Active Users</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-content-right">
+            <div class="virtual-card">
+                <div class="card-header">
+                    <img src="img and video/logo.png" alt="Card Logo" class="card-logo">
+                    <span class="card-type">Virtual</span>
+                </div>
+                <div class="card-numbers">
+                    <span>****</span>
+                    <span>****</span>
+                    <span>****</span>
+                    <span>4462</span>
+                </div>
+                <div class="card-details">
+                    <div class="detail-item">
+                        <small>Exp. Date</small>
+                        <span>31/12/2030</span>
+                    </div>
+                    <div class="detail-item">
+                        <small>Card Holder</small>
+                        <span>kavya patel</span>
+                    </div>
+                </div>
+            </div>
+            <p class="card-description">
+                Simplifying finance with smart, scalable tools—so your business grows faster and smarter.
+            </p>
+        </div>
+    </main>
+
+    <section class="second-Main">
+
+        <div class="balance-part">
+            <div class="balance-box">
+                <h3>Bank balance</h3>
+                <h1 class="bank-balance"><sup>₹</sup>1152</h1>
+            </div>
+            <h1>Make sure you entered the right UPI PIN. If you forgot your UPI PIN, you can create a new one.
+                aliquid exercitationem eos doloremque tempore quae tenetur accusantium voluptatibus id consequatur
+                asperiores.</h1>
+        </div>
+       <div class="left-right">
+        <div class="left">
+            <span><button onclick="depositMain()">Deposit</button>
+                <button onclick="withdrowMain()">withdrow</button>
+            </span>
+            <div class="diposit-form">
+                <h4>Diposite</h4>
+                <input type="number" name="" id="diposit-amount" placeholder="Entar diposit amount">
+                <button id="diposit" onclick="deposit()">submit</button>
+                <p class="diposit-done">pleace wait</p>
+            </div>
+            <div class="withdrow-form">
+                <h4>Withdrow</h4>
+                <input type="number" name="" id="withdrow-amount" placeholder="Entar withdrow amount">
+                <button id="withdrow" onclick="withdrow()">submit</button>
+                <p class="withdrow-done">pleace wait</p>
+            </div>
+            </div>
+            <div class="right">
+                <h1>History</h1>
+                <div class="history-scroll-container">
+                 
+                    <div class="history-item"></div>
+                </div>
+            </div>
+        </div>
+
+       </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+
+</html>
