@@ -1,0 +1,383 @@
+/*
+ * Final Style: Fixed Layout without Media Queries
+ * This style uses a consistent design with both the progress ring and the countdown display
+ * fixed in a clean, side-by-side layout.
+ */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+:root {
+    --bg: #0a0a0a;
+    --panel: rgba(255, 255, 255, 0.08);
+    --panel-border: rgba(255, 255, 255, 0.15);
+    --text: #f0f2f5;
+    --muted: #b0b8c4;
+    --accent: #6a8ee8;
+    --warn: #f5a623;
+    --danger: #e84d4d;
+    --black: #000000;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: auto;
+    position: relative;
+    padding: 2rem;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle 1200px at 50% -20%, rgba(106, 142, 232, 0.15), transparent),
+                radial-gradient(circle 1000px at -10% 110%, rgba(138, 110, 232, 0.12), transparent);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* Header */
+.app-header {
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+}
+
+.brand {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-size: 2.5rem;
+    color: var(--accent);
+    text-shadow: 0 0 15px rgba(106, 142, 232, 0.8);
+    background: linear-gradient(45deg, var(--accent), #8a6ee8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* App Grid */
+.app-grid {
+    width: 600px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Panel */
+.panel {
+    background: var(--panel);
+    padding: 2.5rem;
+    border-radius: 25px;
+    backdrop-filter: blur(20px) saturate(1.5);
+    border: 1px solid var(--panel-border);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3),
+                0 5px 15px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.panel:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4),
+                0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Progress Ring & Countdown Display */
+.progress-wrap {
+    display: flex; /* Use flexbox to align items side-by-side */
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+    width: 250px;
+    height: 250px;
+}
+
+.progress-bg {
+    stroke-width: 12;
+    stroke: rgba(255, 255, 255, 0.1);
+    fill: none;
+}
+
+.progress-value {
+    stroke-width: 12;
+    stroke: var(--accent);
+    fill: none;
+    stroke-dasharray: 502.65;
+    stroke-dashoffset: 502.65;
+    transition: stroke-dashoffset 0.3s ease-out;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 8px rgba(106, 142, 232, 0.8));
+}
+
+.countdown-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    text-align: center;
+    position: static; /* Remove absolute positioning */
+    transform: none; /* Remove transform */
+}
+
+.time-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 0.5rem;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--panel-border);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.time-box:hover {
+    transform: translateY(-3px);
+}
+
+.time-box span {
+    font-weight: 700;
+    font-size: 3.2rem;
+    color: var(--accent);
+    text-shadow: 0 0 10px rgba(106, 142, 232, 0.6);
+}
+
+.time-box small {
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status {
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin-top: 2.5rem;
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* Controls */
+.controls {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.input-group label {
+    font-size: 1rem;
+    color: var(--muted);
+    font-weight: 300;
+}
+
+#targetTime {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 0.9rem 1.2rem;
+    color: var(--text);
+    font-size: 1.1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#targetTime:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(106, 142, 232, 0.3);
+}
+
+/* Buttons */
+.btn {
+    padding: 0.8rem 1.8rem;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background-color: var(--accent);
+    color: var(--text);
+}
+
+.btn-secondary:hover {
+    background-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.btn-warning {
+    background: var(--warn);
+    color: var(--black);
+}
+
+.btn-warning:hover {
+    background: #f7b95c;
+    box-shadow: 0 6px 15px rgba(245, 166, 35, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: var(--danger);
+    color: var(--black);
+}
+
+.btn-danger:hover {
+    background: #eb7a7a;
+    box-shadow: 0 6px 15px rgba(232, 77, 77, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn {
+    background: var(--accent);
+    color: var(--black);
+}
+
+.btn:hover {
+    background: #8aacef;
+    box-shadow: 0 6px 15px rgba(106, 142, 232, 0.4);
+}
+
+#startBtn {
+    background: var(--accent);
+    color: var(--black);
+}
+
+#startBtn:hover {
+    background: #8aacef;
+    box-shadow: 0 6px 15px rgba(106, 142, 232, 0.4);
+}
+
+#pauseBtn {
+    background: var(--warn);
+    color: var(--black);
+}
+
+#pauseBtn:hover {
+    background: #f7b95c;
+    box-shadow: 0 6px 15px rgba(245, 166, 35, 0.4);
+}
+
+#resetBtn {
+    background: var(--danger);
+    color: var(--black);
+}
+
+#resetBtn:hover {
+    background: #eb7a7a;
+    box-shadow: 0 6px 15px rgba(232, 77, 77, 0.4);
+.btn:active {
+    transform: translateY(0);
+}
+
+.presets {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.presets .btn-secondary {
+    flex-grow: 1;
+    min-width: 80px;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.actions .btn {
+    flex-grow: 1;
+    min-width: 120px;
+}
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.presets {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.presets .btn-secondary {
+    flex-grow: 1;
+    min-width: 80px;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.actions .btn {
+    flex-grow: 1;
+    min-width: 120px;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Countdown Timer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="app-header">
+        <div class="brand">Countdown & Quotes</div>
+    </header>
+
+    <div class="app-grid">
+        <div class="panel timer-panel">
+            <div class="progress-wrap">
+                <svg class="progress-ring" width="180" height="180" viewBox="-10 -10 200 200">
+                    <circle class="progress-bg" cx="90" cy="90" r="80" />
+                    <circle id="progressCircle" class="progress-value" cx="90" cy="90" r="80" />
+                </svg>
+                <div class="countdown-wrap">
+                    <div id="timeGrid" class="time-grid">
+                        <div class="time-box"><span id="hh">00</span><small>Hours</small></div>
+                        <div class="time-box"><span id="mm">00</span><small>Minutes</small></div>
+                        <div class="time-box"><span id="ss">00</span><small>Seconds</small></div>
+                    </div>
+
+                    <p id="statusText" class="status">Set a target time and press Start</p>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="input-group">
+                    <label for="targetTime">Target Time</label>
+                    <input id="targetTime" type="time" class="form-control">
+                </div>
+                <div class="presets">
+                    <button class="btn btn-secondary" data-min="1" id="oneMin">+1 MIN</button>
+                    <button class="btn btn-secondary" data-min="5" id="fiveMin">+5 MIN</button>
+                    <button class="btn btn-secondary" data-min="10" id="tenMin">+10 MIN</button>
+                </div>
+                <div class="actions">
+                    <button id="startBtn" class="btn">Start</button>
+                    <button id="pauseBtn" class="btn btn-warning" style="display: none;">Pause</button>
+                    <button id="resetBtn" class="btn btn-danger">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
