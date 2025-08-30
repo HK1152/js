@@ -1,0 +1,413 @@
+/* =========================
+   Full style.css for Weather App
+   Includes: UI, Input Box, Sky Animations, Dark Mode
+   ========================= */
+
+/* ===== Base UI (Day Mode Default) ===== */
+:root{
+  --accent-a: #4b7bec;
+  --accent-b: #00f2fe;
+  --glass-day: rgba(255,255,255,0.18);
+  --glass-night: rgba(25,30,50,0.6);
+  --text-day: #2e3a59;
+  --text-night: #f1f4f8;
+}
+
+* { box-sizing: border-box; }
+html,body { height: 100%; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+  color: var(--text-day);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.8s ease, color 0.6s ease;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  inset: -50px;
+  background: inherit;
+  z-index: -2;
+  animation: gradientShift 20s infinite alternate;
+}
+@keyframes gradientShift { from { transform: scale(1); } to { transform: scale(1.08); } }
+
+/* ===== Container (glassmorphism) ===== */
+.container {
+  background: var(--glass-day);
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  padding: 40px;
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+  z-index: 10;
+  animation: fadeInCard 0.8s ease-out;
+  transition: background 0.6s ease, border 0.6s ease, box-shadow 0.6s ease;
+}
+@keyframes fadeInCard {
+  from { opacity: 0; transform: scale(0.97) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.container:hover { transform: translateY(-6px) scale(1.01); }
+
+/* ===== Headings ===== */
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: #fff;
+}
+.container > p {
+  color: #e3eaf2;
+  margin: 0 0 18px;
+  font-size: 0.96rem;
+}
+
+/* ===== Stylish Input Box ===== */
+.input-group {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50px;
+  overflow: hidden;
+  margin-bottom: 26px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+.input-group:focus-within {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+#city {
+    flex-grow: 1;
+    padding: 14px 22px;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #fff;
+    font-weight: 500;
+    border: 1px solid black;
+}
+
+#city::placeholder {
+  color: rgba(255,255,255,0.6);
+  font-style: italic;
+  letter-spacing: 0.3px;
+}
+button[type="submit"] {
+    background: linear-gradient(135deg, var(--accent-a), var(--accent-b));
+    border: none;
+    padding: 14px 22px;
+    font-size: 1.1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 0 50px 50px 0;
+    border: 1px solid #ffffff8a;
+}
+button[type="submit"]:hover {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  transform: scale(1.05);
+}
+
+/* ===== Weather card ===== */
+#weather {
+  display: none;
+  background: rgba(255,255,255,0.22);
+  border-radius: 16px;
+  padding: 22px;
+  margin-top: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  animation: slideUp .5s ease forwards;
+  transition: background 0.6s ease;
+}
+@keyframes slideUp { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: translateY(0);} }
+
+#error {
+  margin-top: 10px;
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+/* City name / temp */
+#city-name {
+  font-size: 1.55rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #fff;
+}
+.temperature {
+  font-size: 4.4rem;
+  font-weight: 300;
+  margin: 6px 0;
+  color: #ffe066;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.28);
+}
+.description {
+  font-size: 1.05rem;
+  font-style: italic;
+  margin-bottom: 12px;
+  color: #f1f1f1;
+}
+
+/* info grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 10px 16px;
+  margin-top: 8px;
+}
+.info-grid p {
+  margin: 0; padding: 8px 0;
+  font-size: 0.95rem;
+  display: flex; justify-content: space-between; align-items: center;
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.info-grid p:last-child,
+.info-grid p:nth-last-child(2) { border-bottom: none; }
+.info-grid span { font-weight: 700; color: rgba(255,255,255,0.95); }
+
+/* ===== Spinner ===== */
+.spinner {
+  border: 5px solid rgba(255,255,255,0.18);
+  border-top: 5px solid var(--accent-b);
+  border-radius: 50%;
+  width: 44px; height: 44px;
+  animation: spin 1s linear infinite;
+  margin: 18px auto;
+  display: none;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* =========================
+   Sky / Visual elements
+   ========================= */
+.sky {
+  position: absolute; inset: 0; pointer-events: none; z-index: 1; overflow: hidden;
+}
+
+.sun-wrap,
+.moon-wrap {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  display: none;
+}
+
+.sun,
+.moon {
+  width: 100%;
+  height: 100%;
+}
+
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.stars::before {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 5px white;
+  animation: twinkle 2s infinite alternate;
+  top: 20%;
+  left: 10%;
+}
+
+.stars::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 4px white;
+  animation: twinkle 2.5s infinite alternate;
+  top: 50%;
+  left: 80%;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
+}
+
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background: url('https://www.transparenttextures.com/patterns/cloudy-day.png') repeat;
+  opacity: 0.7;
+}
+
+.rain-layer,
+.snow-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: none;
+}
+
+.drop {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to { transform: translateY(100vh); opacity: 0; }
+}
+
+.flake {
+  position: absolute;
+  animation: snowfall linear infinite;
+}
+
+@keyframes snowfall {
+  0% { transform: translate(0, -10vh); opacity: 1; }
+  100% { transform: translate(20px, 100vh); opacity: 0; }
+}
+
+.flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0;
+  transition: opacity 0.1s ease-out;
+}
+
+.bolt {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 100px solid yellow;
+  transform: rotate(20deg);
+  display: none;
+}
+
+  background: radial-gradient(#fff 1px, transparent 1px) 0 0/4px 4px,
+              radial-gradient(#fff 1px, transparent 1px) 10px 30px/5px 5px,
+              radial-gradient(#fff 1px, transparent 1px) 60px 80px/3px 3px;
+  filter: blur(0.2px);
+  animation: starDrift 40s linear infinite;
+}
+@keyframes starDrift {
+  from{ background-position:0 0, 0 0, 0 0 }
+  to  { background-position:0 200px, 0 200px, 0 200px }
+}
+
+/* Sun */
+.sun-wrap{ position:absolute; top:8%; left:10%; display:none; z-index:2; }
+.sun { width:120px; height:120px; display:block; }
+.sun use ~ #rays { transform-origin:100px 100px; animation: raysRotate 18s linear infinite; }
+@keyframes raysRotate { to { transform: rotate(360deg); } }
+
+/* Moon */
+.moon-wrap{ position:absolute; top:10%; left:14%; display:none; z-index:2; }
+.moon { width:92px; height:92px; display:block; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25)); }
+
+/* Clouds */
+.clouds { position:absolute; inset:0; display:none; z-index:1; }
+.cloud { fill: #fff; opacity: 0.95; filter: drop-shadow(0 6px 10px rgba(0,0,0,0.09)); }
+.c1{ width:260px; position:absolute; top:18%; left:-300px; animation: cloudMove 48s linear infinite; }
+.c2{ width:220px; position:absolute; top:28%; left:-220px; animation: cloudMove 60s linear infinite 6s; opacity:.94; }
+.c3{ width:180px; position:absolute; top:12%; left:-180px; animation: cloudMove 68s linear infinite 9s; opacity:.9; }
+@keyframes cloudMove { from { transform: translateX(0);} to { transform: translateX(140vw);} }
+
+/* Rain */
+.rain-layer { position: absolute; inset:0; display:none; z-index:2; }
+.drop {
+  position: absolute;
+  width: 18px; height: 22px;
+  opacity: 0.88;
+  animation: fallDrop linear forwards;
+}
+@keyframes fallDrop { to { transform: translateY(110vh); opacity: 0.9; } }
+
+/* Snow */
+.snow-layer { position:absolute; inset:0; display:none; z-index:3; }
+.flake {
+  position: absolute;
+  width: 18px; height: 18px;
+  opacity: 0.95;
+  animation: fallFlake linear forwards, driftFlake ease-in-out infinite;
+}
+@keyframes fallFlake { to { transform: translateY(105vh); } }
+@keyframes driftFlake { 0%,100%{ transform: translateX(0);} 50%{ transform: translateX(18px);} }
+
+/* Thunder */
+.flash {
+  position:absolute; inset:0; background:#ffffff; opacity:0;
+  mix-blend-mode: screen; transition: opacity .14s ease;
+  z-index:4;
+}
+.bolt {
+  position: absolute; width: 80px; height: 130px; display:none;
+  filter: drop-shadow(0 0 12px rgba(255,233,74,0.95));
+  z-index: 4;
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .container { padding: 26px; max-width: 92%; }
+  .temperature { font-size: 3.2rem; }
+  h1 { font-size: 1.6rem; }
+  .sun { width: 86px; height:86px; }
+  .moon { width:72px; height:72px; }
+}
+
+/* ===== Dark Mode ===== */
+body.dark {
+  background: linear-gradient(135deg, #141E30 0%, #243B55 100%);
+  color: var(--text-night);
+}
+body.dark .container {
+  background: var(--glass-night);
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.55);
+}
+body.dark #weather { background: rgba(255,255,255,0.06); }
+body.dark #city-name, body.dark .description, body.dark .info-grid p { color: var(--text-night); }
+body.dark .input-group { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); }
