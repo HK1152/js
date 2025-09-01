@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="new_style.css">
+</head>
+<body>
+    <h1>covid-19</h1>
+    <select name="" id="selectbox"></select>
+    <div class="result"></div>
+
+    <script>
+        const selectbox = document.getElementById('selectbox');
+        const result = document.querySelector('.result');
+        const url = 'https://disease.sh/v3/covid-19/countries';
+        fetch(url)
+        .then(res => res.json())
+        .then(fetchedData => {
+            data = fetchedData;
+            console.log(data);
+            data.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.country;
+                option.textContent = item.country;
+                selectbox.appendChild(option);
+            })
+            selectbox.addEventListener('change', (e) => {
+                display(e.target.value);
+                
+            })
+                
+        })
+        let data = [];
+        function display(country){
+            const countryData = data.find(item => item.country === country);
+            result.innerHTML = `
+                <p>Country: ${countryData.country}</p>
+                <p>Total Cases: ${countryData.cases}</p>
+                <p>Total Deaths: ${countryData.deaths}</p>
+                <p>Total Recovered: ${countryData.recovered}</p>
+                <p>Total Active: ${countryData.active}</p>
+                <p>Total Critical: ${countryData.critical}</p>
+                <p>Total Tests: ${countryData.tests}</p>
+                <p>Total Cases per One Million: ${countryData.casesPerOneMillion}</p>
+                <p>Total Deaths per One Million: ${countryData.deathsPerOneMillion}</p>
+                <p>Total Recovered per One Million: ${countryData.recoveredPerOneMillion}</p>
+                <p>Total Active per One Million: ${countryData.activePerOneMillion}</p>
+                <p>Total Critical per One Million: ${countryData.criticalPerOneMillion}</p>
+                <p>Total Tests per One Million: ${countryData.testsPerOneMillion}</p>
+               
+            `
+        }
+            
+
+    </script>
+</body>
+</html>
