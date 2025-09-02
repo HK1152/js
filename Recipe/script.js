@@ -7,7 +7,6 @@ let searchRecipes = document.getElementById('searchRecipes');
 let submitBtn = document.getElementById('submit');
 let editIndex = null; 
 
-// Default demo recipes
 let defaultRecipes = [
     {
         name: "Khaman Dhokla",
@@ -32,10 +31,21 @@ let defaultRecipes = [
         ingredients: "Paneer, butter, cream, tomato puree, spices",
         instructions: "Cook tomato gravy, add paneer and cream.",
         category: "vegetarian"
+    },
+    {
+        name: "Veg Fried Rice",
+        ingredients: "Cooked rice, mixed vegetables, soy sauce, garlic",
+        instructions: "Stir-fry garlic, veggies, add rice & soy sauce.",
+        category: "vegan"
+    },
+    {
+        name: "Brownie",
+        ingredients: "Flour, cocoa powder, butter, sugar, eggs",
+        instructions: "Mix, bake at 180°C for 25 minutes.",
+        category: "gluten-free"
     }
 ];
 
-// Check localStorage; if empty, use defaults
 let recipes = JSON.parse(localStorage.getItem('recipes'));
 if (!recipes || recipes.length === 0) {
     recipes = defaultRecipes;
@@ -44,12 +54,10 @@ if (!recipes || recipes.length === 0) {
 
 window.addEventListener('load', () => displayRecipes());
 
-// Save to localStorage
 function saveToLocalStorage() {
     localStorage.setItem('recipes', JSON.stringify(recipes));
 }
 
-// Add or update recipe
 function addRecipe() {
     let name = recipeName.value;
     let ing = ingredients.value;
@@ -78,7 +86,6 @@ function addRecipe() {
     }
 }
 
-// Display recipes with Bootstrap cards
 function displayRecipes(filteredRecipes = recipes) {
     recipeList.innerHTML = ''; 
     
@@ -108,7 +115,6 @@ function displayRecipes(filteredRecipes = recipes) {
     });
 }
 
-// Edit recipe
 function editRecipe(index) {
     let recipe = recipes[index];
     recipeName.value = recipe.name;
@@ -120,14 +126,12 @@ function editRecipe(index) {
     submitBtn.innerText = "Update Recipe";
 }
 
-// Delete recipe
 function deleteRecipe(index) {
     recipes.splice(index, 1);
     saveToLocalStorage();
     displayRecipes();
 }
 
-// Filter
 let filterSelector = document.getElementById('filter-selector');
 filterSelector.addEventListener('input', function() {
     let filter = filterSelector.value;
@@ -138,7 +142,6 @@ filterSelector.addEventListener('input', function() {
     displayRecipes(filteredRecipes);
 });
 
-// Search
 searchRecipes.addEventListener('input', function() {
     let search = searchRecipes.value.toLowerCase();
     let filteredRecipes = recipes.filter(recipe => 
