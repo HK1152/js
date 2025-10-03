@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <h1>click count</h1>
+  <span><p>You clicked the button <b id="clickCount">0</b> times.</p></span>
+  <button id="clickButton">click me</button>
+  <button id="resetButton">reset</button>
+  <button id="lowerButton">Lower Count</button>
+
+
+  <script>
+    let count = 0;
+    let countDisplay = document.getElementById("clickCount");
+    let button = document.getElementById("clickButton");
+    let reset=document.getElementById("resetButton");
+    let lowerButton=document.getElementById("lowerButton");
+
+
+    function updateCountDisplay() {
+        countDisplay.innerText = count;
+        if(count>0){
+            countDisplay.style.color="green";
+        }else if(count==0){
+            countDisplay.style.color="black";
+        }else{
+            countDisplay.style.color="red";
+        }
+    }
+
+    button.addEventListener("click",()=>{
+        count++;
+        updateCountDisplay();
+    })
+
+    reset.addEventListener("click",()=>{
+        if(count==0){
+            alert("Count is already zero.");
+        }else{
+            count=0;
+            updateCountDisplay();
+        }
+    })
+
+    lowerButton.addEventListener("click",()=>{
+        count--;
+        updateCountDisplay();
+    })
+
+   
+  </script>
+</body>
+</html>

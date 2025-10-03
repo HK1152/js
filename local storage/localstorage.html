@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p></p>
+    <script>
+        localStorage.setItem('name','hk');
+        localStorage.setItem('age',19);
+
+        let name = localStorage.getItem('name');
+        let age = localStorage.getItem('age');
+
+        document.querySelector('p').innerText = `name is "${name}" and age is "${age}"`
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Random quora</h1>
+    <button>Click me,and change</button>
+    <h3>change word</h3>
+    <h5>-hk</h5>
+
+    <script>
+        let quorasCollection = [
+            "How can one balance wisdom and action in daily life?",
+            "Why is compassion the strongest way to connect with others? ",
+            "What does true leadership mean in challenging times?",
+            "How can dedication give strength beyond limits?",
+            "Why is curiosity the key to learning and creativity?"
+        ];
+        let athorsCollection = [
+            "-krishna",
+            "-radha",
+            "-ram",
+            "-hanuman",
+            "-ganesh"
+        ]
+        let btn = document.querySelector("button");
+        let quora = document.querySelector("h3");
+        let athor = document.querySelector("h5");
+        btn.addEventListener("click",()=>{
+            let randomNumber = Math.floor(Math.random() * quorasCollection.length);
+            quora.innerText = quorasCollection[randomNumber];
+            athor.innerText = athorsCollection[randomNumber];
+        })
+    </script>
+</body>
+
+</html>

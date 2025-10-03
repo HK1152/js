@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Clock</h1>
+    <span><b id="hh">00</b>:<b id="mm">00</b>:<b id="ss">00</b></span>
+
+    <script>
+        let hh = document.getElementById("hh");
+        let mm = document.getElementById("mm");
+        let ss = document.getElementById("ss");
+        const time = ()=>{
+            let date = new Date();
+            let h = date.getHours();
+            let m = date.getMinutes();
+            let s = date.getSeconds();
+
+            hh.innerText = h ;
+            mm.innerText = m ;
+            ss.innerText = s ;    
+            setTimeout(time, 1000);
+
+        }
+        time();
+    </script>
+</body>
+</html>

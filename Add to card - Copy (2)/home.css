@@ -1,0 +1,310 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(img/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: #222;
+}
+
+/* header */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 36px;
+    width: auto;
+    display: block;
+}
+
+.search input {
+    width: 260px;
+    max-width: 60vw;
+    padding: 8px 12px;
+    border: 1px solid #d0d0d0;
+    border-radius: 20px;
+    outline: none;
+    transition: box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.search input::placeholder {
+    color: #9aa0a6;
+}
+
+.search input:focus {
+    border-color: #7aa7ff;
+    box-shadow: 0 0 0 3px rgba(122, 167, 255, 0.25);
+}
+
+.user {
+    background-color: #10253b;
+    color: white;
+    padding: 10px 21px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    outline: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+.user:active {
+    background-color: #004085;
+    transform: translateY(0);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cart-count {
+    background-color: #ff0000;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* FLIP CARD CSS */
+.main {
+    width: 320px;
+    height: 480px;
+    margin: 20px auto;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    perspective: 1000px; /* 3D इफ़ेक्ट के लिए */
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.main:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-content {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.back-content h2 {
+    font-size: 24px;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+}
+
+.back-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #4b4b4b;
+    width: 100%;
+}
+
+.back-details span {
+    font-weight: normal;
+    color: #000;
+    display: inline-block;
+}
+
+/* END OF FLIP CARD CSS */
+
+.main .up img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px 12px 0 0;
+}
+
+.midd {
+    padding: 16px;
+    text-align: left;
+    height: 120px;
+    overflow: hidden;
+}
+
+.product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.midd h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.midd h5 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4b4b4b;
+}
+
+.midd p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.down {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e0e0e0;
+    padding: 10px 0;
+}
+
+.d-d {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #e0e0e0;
+    padding: 0 8px;
+}
+
+.d-d:last-child {
+    border-right: none;
+}
+
+.d-d p {
+    font-size: 12px;
+    color: #888;
+    line-height: 1.2;
+}
+
+.d-d p b {
+    font-size: 14px;
+    color: #222;
+}
+
+.add-to-cart-button,
+.remove-from-cart-button {
+    background-color: #10253b;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    justify-content: center;
+}
+
+.add-to-cart-button:hover,
+.remove-from-cart-button:hover {
+    background-color: #0056b3;
+}
+
+.remove-from-cart-button {
+    background-color: #dc3545;
+}
+
+.remove-from-cart-button:hover {
+    background-color: #c82333;
+}
+
+.add-to-cart-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1760px;
+    margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+    .search input {
+        width: 160px;
+    }
+    .main {
+        width: 100%;
+        max-width: 320px;
+        height: 520px; /* मोबाइल पर थोड़ी अधिक ऊंचाई */
+    }
+    .main .up img {
+        height: 220px;
+    }
+    section {
+        gap: 20px;
+        padding: 20px 12px;
+    }
+}

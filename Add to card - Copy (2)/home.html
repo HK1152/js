@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>Home</title>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="img/01.png" alt="logo">
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Search" id="searchInput">
+        </div>
+        <button class="user" id="cartSectionButton">
+            <span class="cart-text">Go to Cart</span>
+            <span id="cartItemCount" class="cart-count"></span>
+        </button>
+    </nav>
+    <section>
+        <div class="main">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="up">
+                        <img src="img/post 1.jpg" alt="">
+                    </div>
+                    <div class="midd">
+                        <div class="product-info">
+                            <h1>Sunset at the Beach</h1>
+                            <h5>$110</h5>
+                        </div>
+                        <p>A beautiful sunset over the ocean, with vibrant colors reflecting on the water, creating a serene and picturesque scene.</p>
+                    </div>
+                    <div class="down" id="post-2" data-price="110">
+                        <div class="d-d">
+                            <button class="add-to-cart-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-shopping-cart">
+                                    <circle cx="8" cy="21" r="1" />
+                                    <circle cx="19" cy="21" r="1" />
+                                    <path d="M2.5 2h2l.75 4.5" />
+                                    <path d="M18.84 8.65L22 12H6.62c-.41 0-.6-.2-.7-.52l-2.43-8.6c-.1-1.2.66-2.4 1.86-2.4h11.97" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="d-d">
+                            <p><b>425</b><br>VIEWS</p>
+                        </div>
+                        <div class="d-d">
+                            <p><b>62</b><br>COMMENTS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-back" data-id="post-2">
+                    <div class="back-content">
+                        <h2>Added to Cart</h2>
+                        <div class="back-details">
+                            <p>Quantity: <span class="item-quantity">1</span></p>
+                            <p>Total Price: <span class="item-total-price">$110</span></p>
+                        </div>
+                        <button class="remove-from-cart-button">Remove from Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="up">
+                        <img src="img/post 02.jpg" alt="">
+                    </div>
+                    <div class="midd">
+                        <div class="product-info">
+                            <h1>Mountain Landscape</h1>
+                            <h5>$125</h5>
+                        </div>
+                        <p>Majestic mountains covered in snow, with a clear blue sky, offering a breathtaking view of nature's grandeur.</p>
+                    </div>
+                    <div class="down" id="post-3" data-price="125">
+                        <div class="d-d">
+                            <button class="add-to-cart-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-shopping-cart">
+                                    <circle cx="8" cy="21" r="1" />
+                                    <circle cx="19" cy="21" r="1" />
+                                    <path d="M2.5 2h2l.75 4.5" />
+                                    <path d="M18.84 8.65L22 12H6.62c-.41 0-.6-.2-.7-.52l-2.43-8.6c-.1-1.2.66-2.4 1.86-2.4h11.97" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="d-d">
+                            <p><b>425</b><br>VIEWS</p>
+                        </div>
+                        <div class="d-d">
+                            <p><b>62</b><br>COMMENTS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-back" data-id="post-3">
+                    <div class="back-content">
+                        <h2>Added to Cart</h2>
+                        <div class="back-details">
+                            <p>Quantity: <span class="item-quantity">1</span></p>
+                            <p>Total Price: <span class="item-total-price">$125</span></p>
+                        </div>
+                        <button class="remove-from-cart-button">Remove from Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        </section>
+    <script src="home.js"></script>
+</body>
+
+</html>

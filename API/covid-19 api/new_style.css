@@ -1,0 +1,326 @@
+option {
+  background: var(--bg);
+  color: var(--text);
+}
+
+:root {
+  --bg: #0f1224;
+  --accent: #6ef3ff;
+  --brand: #6ea8fe;
+  --text: #e6e8f0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 16px;
+  border-radius: 16px;
+  background: linear-gradient(90deg, var(--brand), var(--accent));
+  color: #0b1026;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* ===== Theme Toggle Button ===== */
+#themeToggle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Glassy look */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  color: var(--text);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+#themeToggle:hover {
+  background: linear-gradient(135deg, var(--brand), var(--accent));
+  color: #0b1026;
+  box-shadow: 0 0 15px var(--accent), 0 0 25px rgba(110, 168, 254, 0.6);
+  transform: scale(1.1);
+}
+
+#themeToggle:active {
+  transform: scale(0.95);
+}
+
+/* ===== Controls ===== */
+.controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 0 auto 22px;
+  width: min(820px, 92vw);
+  justify-content: center;
+}
+
+#searchBox,
+#selectbox {
+  flex: 1;
+  padding: 0px 16px;
+  height: 50px;
+  min-width: 200px;
+  max-width: 300px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+#searchBox:focus,
+#selectbox:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+  transform: scale(1.02);
+}
+
+.result {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 100px;
+  justify-content: center;
+}
+
+.country-card {
+  min-width: 280px;
+  max-width: 365px;
+  min-height: 460px;
+  max-height: 519px;
+  margin: auto;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  transition: transform .25s ease, box-shadow .25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: fadeInUp 0.6s ease both;
+  overflow: hidden;
+}
+
+.country-card:hover {
+  transform: rotateX(6deg) rotateY(-6deg) scale(1.03);
+  box-shadow: 0 20px 40px rgba(110, 168, 254, 0.5);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Card Top ===== */
+.card-top {
+  text-align: center;
+}
+
+.card-top img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+  margin-bottom: 10px;
+}
+
+.card-top h2 {
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text);
+  margin: 0;
+}
+
+/* ===== Main Stat Boxes ===== */
+.card-main {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.stat-box {
+  flex: 1;
+  min-width: 95px;
+  max-width: 105px;
+  min-height: 50px;
+  padding: 14px 10px;
+  border-radius: 14px;
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stat-box h3 {
+  font-size: 13px;
+  margin: 0 0 6px;
+}
+
+.stat-box p {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 800;
+}
+
+.stat-box.cases {
+  background: #facc15;
+  color: #000;
+}
+
+.stat-box.deaths {
+  background: #ef4444;
+}
+
+.stat-box.recovered {
+  background: #22c55e;
+}
+
+/* ===== Extra Stats ===== */
+.card-extra {
+  max-height: 252px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* Chrome, Edge, Safari scrollbar */
+.card-extra::-webkit-scrollbar {
+  width: 8px;
+}
+
+.card-extra::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.card-extra::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--brand), var(--accent));
+  border-radius: 8px;
+}
+
+.card-extra::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #5c93f9, #4de0e8);
+}
+
+/* Firefox */
+.card-extra {
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand) rgba(255, 255, 255, 0.05);
+}
+
+.card-extra p {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  min-height: 34px;
+  margin: 8px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== Pagination ===== */
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  align-items: center;
+  grid-column: 1 / -1;
+}
+
+.pagination button {
+  min-width: 90px;
+  height: 40px;
+  border-radius: 30px;
+  font-weight: 600;
+  border: none;
+  background: linear-gradient(90deg, var(--brand), var(--accent));
+  color: #0b1026;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+.pagination button:hover:enabled {
+  box-shadow: 0 0 12px var(--accent);
+  transform: translateY(-3px) scale(1.05);
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ===== Light Mode ===== */
+body.light-mode {
+  background: #f6f8ff;
+  color: #0b1026;
+}
+
+body.light-mode .country-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Inputs in light mode */
+body.light-mode #searchBox,
+body.light-mode #selectbox {
+  background: #fff;
+  color: #0b1026;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode #searchBox::placeholder {
+  color: #666;
+}
+
+body.light-mode #selectbox option {
+  background: #fff;
+  color: #0b1026;
+  padding: 8px;
+}
+
+/* Card title in light mode */
+body.light-mode .card-top h2 {
+  color: #0b1026;
+}

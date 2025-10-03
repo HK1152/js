@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <h1>hare krishna</h1>
+    <button id="hide">Radhey Radhey(hide)</button>
+    <button id="show">Radhey Radhey(show)</button>
+    <button id="toggle">Radhey Radhey(toggle)</button>
+    <script>
+        $(document).ready(() => {
+            $("#hide").click(() => {
+                $("h1").hide();
+            })
+            $("#show").click(() => {
+                $("h1").show();
+            })
+            $("#toggle").click(()=>{
+                $("h1").toggle();
+            })
+        });
+    </script>
+</body>
+
+</html>

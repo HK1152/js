@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button>Get Dog</button>
+    <div class="box">
+
+
+    </div>
+
+    <script>
+        let url = "https://dog.ceo/api/breeds/image/random"
+        let btn = document.querySelector("button")
+        let box = document.querySelector(".box")
+        btn.addEventListener("click", () => {
+            fetch(url)
+                .then((res)=>{
+                    return res.json()
+                })
+                .then((data)=>{
+                    // box.innerHTML = "" // aek aek lene ke liye
+
+                    let img = document.createElement("img")
+                    img.src = data.message
+                    box.appendChild(img)
+                })
+        })
+
+    </script>
+
+</body>
+
+</html>

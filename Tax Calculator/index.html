@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Tax Calculator</h1><br>
+    <form id="taxForm">
+        <label for="taxlist">Select tax type:</label>
+        <select name="taxlist" id="taxlist">
+            <option value="basic">Service tax</option>
+            <option value="gold">Capital gain tax</option>
+            <option value="diamond">Income tax</option>
+            <option value="silver">Securities transaction tax</option>
+            <option value="bronze">Sales tax</option>
+            <option value="iron">GST</option>
+        </select>
+        <br><br>
+        <label for="income">Enter your income:</label>
+        <input type="number" id="income" name="income" required>
+    </form>
+    <h2 id="result"></h2>
+
+
+
+    <script>
+        let form = document.getElementById('taxForm');
+        let result = document.getElementById('result');
+
+         function tax(event) {
+            event.preventDefault();
+            let taxType = document.getElementById('taxlist').value;
+            let income = parseFloat(document.getElementById('income').value);
+            let tax = 0;
+            switch(taxType) {
+                case 'basic':
+                    tax = income * 0.05; 
+                    break;
+                case 'gold':
+                    tax = income * 0.15; 
+                    break;
+                case 'diamond':
+                    tax = income * 0.20; 
+                    break;
+                case 'silver':
+                    tax = income * 0.07; 
+                    break;
+                case 'bronze':
+                    tax = income * 0.10; 
+                    break;
+                case 'iron':
+                    tax = income * 0.18; 
+                    break;
+                default:
+                    tax = 0;
+            }
+            result.innerHTML = "Your tax is: " + tax.toFixed(2);
+        }
+
+        form.addEventListener('change', tax);
+        form.addEventListener('input', tax);
+    </script>
+</body>
+</html>

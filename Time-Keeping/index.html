@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Time Keeping</h1>
+    <button>show current time</button>
+    <div></div>
+
+    <script>
+        let btn = document.querySelector("button");
+        let display = document.querySelector("div");
+        btn.addEventListener("click", ()=>{
+            display.innerHTML = "";
+            let time = new Date();
+            let hours = time.getHours();
+            if(hours <=12){
+                let play = `<h2>Current time is ${hours} AM</h2>`
+              display.insertAdjacentHTML('beforeend', play);
+              display.style.color = "green";
+
+            }
+            else if(hours > 12){
+                let play = `<h2>Current time is ${hours - 12} PM</h2>`
+              display.insertAdjacentHTML('beforeend', play);
+              display.style.color = "blue";
+            }
+            else{
+                let play = `<h2>Current time is ${hours} Midnight</h2>`
+              display.insertAdjacentHTML('beforeend', play);
+              display.style.color = "red";
+            }
+        });
+    </script>
+</body>
+</html>

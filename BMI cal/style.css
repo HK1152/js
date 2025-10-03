@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    background-color: #eeefff;
+}
+
+
+
+/* .container{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+} */
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    /* text-align: center; */
+    width: 315px;
+    height: 370px;
+    background-color: #f2f9f9;
+    box-shadow: 10px 13px 18px rgb(0 0 0 / 56%);
+    /* border-radius: 10px; */
+    padding: 20px;
+    margin: 20px;
+    gap: 10px;
+    /* border: 1px solid #000; */
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #000;
+    text-align: center;
+    text-transform: capitalize;
+    text-decoration: none;
+    /* text-decoration-color: #000; */
+    text-decoration-style: solid;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #000;
+}
+
+#gender {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    margin-bottom: 10px;
+}
+
+
+#calculate {
+    width: 100%;
+    padding: 10px;
+}
+
+#result {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+}
+
+input {
+    width: 100%;
+    padding: 10px 0px;
+    border: 1px solid #000;
+    background-color: #fff;
+    color: #000;
+}
+.weight-value{
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 10px;
+}
+.height-value{
+    font-size: 14px;
+    font-weight: bold;
+}

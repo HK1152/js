@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <button type="submit">Login</button>
+    </form>
+    <div class="display"></div>
+    <script>
+        let form = document.querySelector('form');
+        let display = document.querySelector('.display');
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            let username = form.username.value;
+            let password = form.password.value;
+         
+            if(username === '' || password === ''){
+               alert('All fields are required');
+            }else{
+                display.innerText = `Username: ${username}, Password: ${password}`;
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Covid-19 Tracker</title>
+  <link rel="stylesheet" href="new_style.css">
+</head>
+<body>
+  <h1>
+    Covid-19 Dashboard 
+    <button id="themeToggle">🌙</button>
+  </h1>
+
+  <div class="controls">
+    <input type="text" id="searchBox" placeholder="🔍 Search country..." />
+    <select id="selectbox"></select>
+  </div>
+
+  <div class="result"></div>
+
+  <script>
+    const selectbox = document.getElementById('selectbox');
+    const searchBox = document.getElementById('searchBox');
+    const result = document.querySelector('.result');
+    const toggleBtn = document.getElementById('themeToggle');
+    const url = 'https://disease.sh/v3/covid-19/countries';
+    let data = [];
+    let currentPage = 1;
+    const itemsPerPage = 20;
+
+    fetch(url)
+    .then(res => res.json())
+    .then(fetchedData => {
+        data = fetchedData;
+
+        const allOption = document.createElement('option');
+        allOption.value = "all";
+        allOption.textContent = "Show All Countries";
+        selectbox.appendChild(allOption);
+
+        data.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.country;
+            option.textContent = item.country;
+            selectbox.appendChild(option);
+        });
+
+        displayPage(currentPage);
+
+        selectbox.addEventListener('change', (e) => {
+            if (e.target.value === "all") {
+                currentPage = 1;
+                displayPage(currentPage);
+            } else {
+                displayOne(e.target.value);
+            }
+        });
+
+        searchBox.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filtered = data.filter(item =>
+                item.country.toLowerCase().includes(query)
+            );
+            currentPage = 1;
+            displayPage(currentPage, filtered);
+        });
+    });
+
+    function displayOne(country){
+        const countryData = data.find(item => item.country === country);
+        result.innerHTML = countryCardHTML(countryData);
+        animateCounters(result);
+    }
+
+    function displayPage(page, dataset = data){
+        result.innerHTML = "";
+        const start = (page - 1) * itemsPerPage;
+        const end = page * itemsPerPage;
+        const pageData = dataset.slice(start, end);
+
+        pageData.forEach(item => {
+            result.innerHTML += countryCardHTML(item);
+        });
+        animateCounters(result);
+        renderPaginationControls(dataset.length, dataset);
+    }
+
+    function renderPaginationControls(totalItems, dataset){
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+        if(totalPages <= 1) return;
+
+        let controlsHTML = `
+          <div class="pagination">
+            <button ${currentPage === 1 ? "disabled" : ""} id="prevBtn">⬅ Prev</button>
+            <span>Page ${currentPage} of ${totalPages}</span>
+            <button ${currentPage === totalPages ? "disabled" : ""} id="nextBtn">Next ➡</button>
+          </div>
+        `;
+        result.innerHTML += controlsHTML;
+
+        if (document.getElementById("prevBtn")) {
+            document.getElementById("prevBtn").addEventListener("click", () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayPage(currentPage, dataset);
+                }
+            });
+        }
+        if (document.getElementById("nextBtn")) {
+            document.getElementById("nextBtn").addEventListener("click", () => {
+                const totalPages = Math.ceil(dataset.length / itemsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayPage(currentPage, dataset);
+                }
+            });
+        }
+    }
+
+    // 🔹 New card structure
+    function countryCardHTML(item){
+        return `
+            <div class="country-card">
+              <div class="card-top">
+                <img src="${item.countryInfo.flag}" alt="${item.country} flag">
+                <h2>${item.country}</h2>
+              </div>
+              
+              <div class="card-main">
+                <div class="stat-box cases" data-value="${item.cases}">
+                  <h3>Cases</h3>
+                  <p>0</p>
+                </div>
+                <div class="stat-box deaths" data-value="${item.deaths}">
+                  <h3>Deaths</h3>
+                  <p>0</p>
+                </div>
+                <div class="stat-box recovered" data-value="${item.recovered}">
+                  <h3>Recovered</h3>
+                  <p>0</p>
+                </div>
+              </div>
+
+              <div class="card-extra">
+                <p>🦠 Active <span>${item.active}</span></p>
+                <p>⚠️ Critical <span>${item.critical}</span></p>
+                <p>🧪 Tests <span>${item.tests}</span></p>
+                <p>📊 Cases/Million <span>${item.casesPerOneMillion}</span></p>
+                <p>⚰ Deaths/Million <span>${item.deathsPerOneMillion}</span></p>
+                <p>❤️ Recovered/Million <span>${item.recoveredPerOneMillion}</span></p>
+                <p>🔵 Active/Million <span>${item.activePerOneMillion}</span></p>
+                <p>🚨 Critical/Million <span>${item.criticalPerOneMillion}</span></p>
+                <p>🧬 Tests/Million <span>${item.testsPerOneMillion}</span></p>
+              </div>
+            </div>
+        `;
+    }
+
+    // Counter animation for stat-boxes
+    function animateCounters(container) {
+        const boxes = container.querySelectorAll('.stat-box');
+        boxes.forEach(box => {
+            const value = +box.getAttribute('data-value');
+            let current = 0;
+            const increment = Math.ceil(value / 60); 
+            const updateCounter = () => {
+                current += increment;
+                if (current >= value) {
+                    box.querySelector("p").textContent = value.toLocaleString();
+                } else {
+                    box.querySelector("p").textContent = current.toLocaleString();
+                    requestAnimationFrame(updateCounter);
+                }
+            };
+            updateCounter();
+        });
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      if(document.body.classList.contains('light-mode')){
+        toggleBtn.textContent = "☀️";
+      } else {
+        toggleBtn.textContent = "🌙";
+      }
+    });
+  </script>
+</body>
+</html>
