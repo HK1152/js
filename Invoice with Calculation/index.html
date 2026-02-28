@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice with Calculation</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-100 flex flex-col items-center min-h-screen">
+    <div class="invoice-container w-9/10 h-full border-2 border-gray-300 m-4 bg-white">
+        <h1 class="invoice-title text-center bg-red-200 pt-4 pb-4 font-bold">Invoice</h1>
+        <div class="invoice-header flex flex-row  p-4">
+            <div class="left w-1/2 p-4">
+                <div class="flex flex-row items-center mb-4">
+                    <label for="customer"
+                        class="block text-xl font-medium bg-purple-200 border rounded-l-sm p-2 w-1/4">Customer</label>
+                    <input type="text" id="customer" name="customer" placeholder="Enter Customer name"
+                        class=" rounded-r text-xl border  w-full p-2 outline-none">
+                </div>
+                <div class="flex flex-row items-center mb-4">
+                    <label for="address"
+                        class="block text-xl font-medium bg-purple-200 border rounded-l-sm p-2 w-1/4">Address</label>
+                    <input type="text" id="address" name="address" placeholder="Enter address"
+                        class="rounded-r text-xl border  w-full p-2 outline-none">
+                </div>
+                <div class="flex flex-row items-center mb-4">
+                    <label for="city"
+                        class="block text-xl font-medium bg-purple-200 border rounded-l-sm p-2 w-1/4">City</label>
+                    <input type="text" id="city" name="city" placeholder="Enter City name"
+                        class="rounded-r text-xl border  w-full p-2 outline-none">
+                </div>
+            </div>
+            <div class="right w-1/2 p-4">
+                <div class="flex flex-row items-center mb-4">
+                    <label for="invoice-number"
+                        class="block text-xl font-medium bg-purple-200 border rounded-l-sm p-2 w-1/4">Inv. Number</label>
+                    <input type="text" id="invoice-number" name="invoice-number" placeholder="Enter Invoice Number"
+                        class="rounded-r text-xl border  w-full p-2 outline-none">
+                </div>
+                <div class="flex flex-row items-center mb-4">
+                    <label for="invoice-date"
+                        class="block text-xl font-medium bg-purple-200 border rounded-l-sm p-2 w-1/4">Inv. Date</label>
+                    <input type="date" id="invoice-date" name="invoice-date"
+                        class="rounded-r text-xl border  w-full p-2 outline-none">
+                </div>
+            </div>
+        </div>
+
+        <div class="form">
+            <form action="">
+
+                <table class="w-9/10 border m-4" id="invoice-table">
+                    <thead class="bg-orange-200">
+                        <tr class="text-left">
+                            <th class="p-2">*</th>
+                            <th class="p-2">Item name</th>
+                            <th class="p-2">Quantity</th>
+                            <th class="p-2">Rate</th>
+                            
+                            <th class="p-2">Amount</th>
+                            <th class="p-2">
+                                <button id="add-row"
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded">
+                                    +
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="invoice-body">
+
+                    </tbody>
+                </table>
+                <button id="calculate-total"
+                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded m-4">
+                    Print Invoice
+                </button>
+                <button id="reset-btn"
+                    class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded m-4">
+                    Reset
+                </button>
+            </form>
+            <div class="w-2/10 flex flex-col justify-left m-4">
+                <div class="">
+                    <h1 class="bg-blue-200 p-3 rounded-lg" id="subtotal-amount">Subtotal: $0.00</h1>
+                </div>
+                
+                <div class="flex gap-0 mt-3">
+                    <label for=""
+                        class="block text-xl font-medium bg-purple-200 border rounded-l-sm p-2 w-1/3">Tax %</label>
+                    <input type="text" id="tax" name="tax" placeholder="Enter tax percentage"
+                        class="rounded-r text-xl border  w-full p-2" value="25">
+                </div>
+                <div class="">
+                    <h1 class="bg-purple-200 p-3 rounded-lg mt-2" id="tax-amount">Tax: $0.00</h1>
+                </div>
+                <div class="">
+                    <h1 class="bg-green-300 p-3 rounded-lg mt-2 text-lg font-bold" id="net-amount">Grand Total: $0.00</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+
+
+    <div class="w-9/10 h-full border-2 border-gray-300 m-4 bg-white">
+        <h1 class="invoice-title text-center bg-green-200 pt-4 pb-4 font-bold ">list of terms and conditions</h1>
+        <div class="invoice-header flex flex-col  p-4">
+            <div class="flex items-center gap-1">
+                <h1>Costumer name:</h1>
+                <h1 id="customer-name"></h1>
+            </div>
+            <div class="flex items-center gap-1">
+                <h1>Address :</h1>
+                <h1 id="customer-address"></h1>
+            </div>
+            <div class="flex items-center gap-1">
+                <h1>city :</h1>
+                <h1 id="customer-city"></h1>
+            </div>
+            <div class="flex items-center gap-1">
+                <h1>inv. number :</h1>
+                <h1 id="customer-invoice-number"></h1>
+            </div>
+            <div class="flex items-center gap-1">
+                <h1>inv. date :</h1>
+                <h1 id="customer-invoice-date"></h1>
+            </div>
+
+        </div>
+
+
+        <table class="w-9/10 border m-4" id="invoice-table-print">
+            <thead class="bg-green-100">
+                <tr class="text-left">
+                    <th class="p-2">*</th>
+                    <th class="p-2">Item name</th>
+                    <th class="p-2">Quantity</th>
+                    <th class="p-2">Rate</th>
+                    
+                    <th class="p-2">Amount</th>
+                </tr>
+            </thead>
+            <tbody id="invoice-body-print">
+            </tbody>
+        </table>
+        
+        <div class="flex flex-col gap-3 m-4 w-2/10 border-t pt-4">
+            <div class="flex justify-between bg-blue-100 p-2 rounded">
+                <span class="font-medium">Subtotal:</span>
+                <span id="print-subtotal">$0.00</span>
+            </div>
+            
+            <div class="flex justify-between bg-purple-100 p-2 rounded">
+                <span class="font-medium">Tax:</span>
+                <span id="print-tax">$0.00</span>
+            </div>
+            <div class="flex justify-between bg-green-300 p-2 rounded font-bold text-lg">
+                <span>Grand Total:</span>
+                <span id="print-grand-total">$0.00</span>
+            </div>
+        </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

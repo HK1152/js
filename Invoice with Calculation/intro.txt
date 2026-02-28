@@ -1,0 +1,44 @@
+Purpose:
+● To create a web-based invoice system where users can enter product/service details and
+automatically calculate totals, taxes, and discounts.
+● Helps students learn form handling, dynamic calculations, DOM manipulation, and front-end
+UI design.
+● Useful for understanding basic billing systems, financial calculations, and invoice generation
+logic.
+Core Features:
+1. Input Form
+○ Add multiple items with fields: Item Name, Quantity, Price per Unit.
+○ Optionally add a discount percentage per item.
+2. Calculation Logic
+○ Calculate total for each item (Quantity × Price).
+○ Sum up all item totals for subtotal.
+○ Apply discounts if provided.
+○ Apply taxes (e.g., VAT, GST) if applicable.
+○ Calculate grand total dynamically.
+3. Invoice Display
+○ Show all items in a table format with calculated totals.
+○ Display subtotal, total discounts, taxes, and final total.
+4. Reset / Clear Functionality
+○ Allow clearing all inputs to create a new invoice.
+5. Optional Features
+○ Save invoice data using localStorage.
+○ Export invoice as PDF or print invoice.
+○ Responsive design for mobile or tablet screens.
+○ Validate inputs (no negative numbers, required fields).
+
+UI Design
+Screens / Sections:
+1. Input Section
+○ Fields for item details: Name, Quantity, Price, Discount.
+○ “Add Item” button to include more items.
+2. Invoice / Output Section
+○ Table listing items and their totals.
+○ Display subtotal, discounts, taxes, and grand total.
+○ “Reset” button to clear the form.
+
+Validation
+● Negative or zero values for quantity or price should be blocked.
+● Empty fields must be validated.
+● Discounts cannot exceed item total.
+● Very large numbers handled gracefully.
+● Reset should clear all calculated totals and input fields.
